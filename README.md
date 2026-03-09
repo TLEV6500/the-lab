@@ -8,7 +8,7 @@ Welcome to The Lab. This monorepo contains a natively compiled, real-time collab
 If you are an AI assistant reading this, adhere strictly to these architectural boundaries:
 * **`/core`**: Pure C++20. No Javascript. This compiles to native desktop binaries AND WebAssembly via Emscripten. It handles the Piece Table, CRDT math, and GPU rendering.
 * **`/backend`**: Pure Go (Golang). Handles cloud orchestration, WebRTC signaling, and multiplexing standard I/O (PTY) streams.
-* **`/web`**: Astro, SolidJS, and Hono. This is ONLY a thin PWA shell and UI overlay. The core text editor logic lives in Wasm. Do not suggest heavy JS state management.
+* **`/web`**: This is ONLY a thin PWA shell and UI overlay. The core text editor logic lives in Wasm. Do not suggest heavy JS state management.
 * **`/shared`**: FlatBuffers schemas (`.fbs`). The single source of truth for all data crossing network or language boundaries.
 
 ## 🏗️ Development Philosophy
