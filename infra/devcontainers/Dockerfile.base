@@ -1,0 +1,21 @@
+# The base image for the Ephemeral Workspaces.
+# This is what executes the code when developers run commands in the shared terminal.
+FROM ubuntu:24.04
+
+# Install basic toolchain and dependencies for the LSP/DAP
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    build-essential \
+    python3 \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add a non-root developer user
+RUN useradd -m -s /bin/bash labdev
+USER labdev
+WORKDIR /workspace
+
+# TODO: Script to auto-download standard LSPs (clangd, tsserver, gopls) on boot
+CMD ["/bin/bash"]

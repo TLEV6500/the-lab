@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-backend-orchestrator
+  labels:
+    app: lab-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab-backend
+  template:
+    metadata:
+      labels:
+        app: lab-backend
+    spec:
+      containers:
+        - name: orchestrator
+          image: lab/backend:latest # Will be built by CI/CD
+          ports:
+            - containerPort: 8080
+          # The Go backend needs RBAC permissions to spin up other pods in the cluster
+          serviceAccountName: workspace-provisioner-sa
