@@ -1,0 +1,18 @@
+# General
+.DS_Store
+node_modules/
+dist/
+build/
+*.log
+
+# C++ / CMake
+core/build/
+core/out/
+*.o
+*.wasm
+
+# Go
+backend/bin/
+
+# FlatBuffers generated files
+shared/gen/
