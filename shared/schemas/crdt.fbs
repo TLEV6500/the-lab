@@ -1,0 +1,14 @@
+namespace Lab.Protocol;
+
+enum OpType : byte { Insert = 0, Delete = 1 }
+
+table CrdtOperation {
+  client_id: uint64;
+  lamport_clock: uint64;
+  op_type: OpType;
+  value: byte;
+  left_id: uint64;
+  right_id: uint64;
+}
+
+root_type CrdtOperation;
